@@ -1,0 +1,1 @@
+# vitrino-your-digital-museum
