@@ -1,57 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./theme.css";
 
 @layer base {
-  :root {
-    /* Core Colors - Dark Museum Theme with Gold Accents */
-    --background: 0 0% 7%;
-    --foreground: 45 10% 90%;
-    
-    --card: 0 0% 10%;
-    --card-foreground: 45 10% 90%;
-    
-    --popover: 0 0% 10%;
-    --popover-foreground: 45 10% 90%;
-    
-    --primary: 45 70% 50%;
-    --primary-foreground: 0 0% 5%;
-    
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 45 10% 90%;
-    
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    
-    --accent: 45 70% 50%;
-    --accent-foreground: 0 0% 5%;
-    
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 45 10% 90%;
-    
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 45 70% 50%;
-    
-    --radius: 0.75rem;
-    
-    /* Gold Palette */
-    --gold: 45 70% 50%;
-    --gold-light: 45 70% 65%;
-    --gold-dark: 45 70% 35%;
-    
-    /* Museum Palette */
-    --museum-charcoal: 0 0% 12%;
-    --museum-obsidian: 0 0% 7%;
-    --museum-slate: 0 0% 20%;
-  }
-
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-black text-foreground antialiased;
+    @apply bg-black antialiased;
+    color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior: none;
@@ -69,7 +26,9 @@
 
   /* Glass effect for badges and overlays */
   .glass-pill {
-    @apply bg-black/60 backdrop-blur-sm rounded-full px-2 py-1;
+    @apply rounded-full px-2 py-1;
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(4px);
   }
 
   /* Gold gradient text */
@@ -111,13 +70,16 @@
   /* Category Pills */
   .category-pill {
     @apply px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap;
-    @apply border border-primary/50 text-foreground/80;
-    @apply transition-all duration-200;
+    border: 1px solid hsl(var(--primary) / 0.5);
+    color: hsl(var(--foreground) / 0.8);
+    transition: all 0.2s;
   }
 
   .category-pill:hover,
   .category-pill.active {
-    @apply bg-primary text-primary-foreground border-primary;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
   }
 
   /* Gold border glow */
@@ -127,7 +89,9 @@
 
   /* Section headers */
   .section-header {
-    @apply text-lg font-display font-bold text-primary text-left mb-3;
+    @apply text-lg font-bold text-left mb-3;
+    font-family: var(--font-display);
+    color: hsl(var(--primary));
   }
 }
 
